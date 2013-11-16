@@ -17,6 +17,7 @@ gem 'bookable'
 gem 'geocoder'
 gem 'acts-as-taggable-on', '~> 2.4.1'
 gem 'actionmailer'
+gem 'cancan'
 
 group :doc do
   gem 'sdoc', require: false
