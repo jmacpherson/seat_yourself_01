@@ -40,6 +40,7 @@ GEM
     boson-more (0.2.2)
       boson (>= 1.2.0)
     builder (3.1.4)
+    cancan (1.6.10)
     clipboard (1.0.5)
     coderay (1.1.0)
     coffee-rails (4.0.1)
@@ -198,6 +199,7 @@ DEPENDENCIES
   actionmailer
   acts-as-taggable-on (~> 2.4.1)
   bookable
+  cancan
   coffee-rails (~> 4.0.0)
   factory_girl_rails
   foundation-icons-sass-rails
