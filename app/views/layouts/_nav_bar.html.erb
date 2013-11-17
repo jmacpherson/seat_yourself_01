@@ -11,9 +11,9 @@
       <li class="divider"></li>
       
       <% if current_user %>
-        <li><a href="<%= logout_path %> ">Sign out</a></li>
+        <li><a href="<%= logout_path %> ">Log out</a></li>
       <% else %>
-        <li><a href="<%= login_path %> ">Sign in</a></li>
+        <li><a href="<%= login_path %> ">Log in</a></li>
         <li class="divider"></li>
         <li><a href="<%= new_user_path %> ">Sign up</a></li>
       <% end %>
