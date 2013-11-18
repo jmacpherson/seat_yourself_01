@@ -1,0 +1,9 @@
+<h1><%= @restaurant.name %></h1>
+
+<p> This restaurant was created by <%= @restaurant.user.email %> at <%= @restaurant.created_at %> </p>
+
+<%= link_to "Make a reservation", new_restaurant_reservation_path(@restaurant.id) %>
+
+
+
+  
