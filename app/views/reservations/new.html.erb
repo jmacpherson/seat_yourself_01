@@ -1,4 +1,7 @@
-<%= form_for @reservation do |f| %>
+<h2>Make a reservation</h2>
+<p><%= Restaurant.find(params[:restaurant_id]).name %></p>
+
+<%= form_for @reservation, url: {:action => "create"} do |f| %>
   <% if @reservation.errors.any? %>
     <div class="error_messages">
       <h2>Form is invalid</h2>
@@ -9,7 +12,14 @@
       </ul>
     </div>
   <% end %>
+  <%= f.label :day %>
+  <%= f.date_field :day %>
+  <br>
+  <%= f.label :time %>
+  <%= f.collection_select :time, Reservation::TIMES, :to_s, :humanize %>
+  <br>
+  <%= f.label :guests %>
+  <%= f.collection_select :guests, Reservation::GUESTS, :to_i, :humanize %>
   
-  
-  <%= f.submit "Book it", :class => "button" %>
+  <%= f.submit "Take a seat", :class => "button" %>
 <% end %>

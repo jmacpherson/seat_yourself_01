@@ -18,6 +18,7 @@ gem 'geocoder'
 gem 'acts-as-taggable-on', '~> 2.4.1'
 gem 'actionmailer'
 gem 'cancan'
+gem 'pry'
 
 group :doc do
   gem 'sdoc', require: false

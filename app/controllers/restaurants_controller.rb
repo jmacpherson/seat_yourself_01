@@ -2,7 +2,7 @@ class RestaurantsController < ApplicationController
   before_filter :load_user
 
   def index
-  
+    @restaurants= Restaurant.all
   end
   
   def show

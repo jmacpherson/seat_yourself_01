@@ -5,12 +5,18 @@ class ReservationsController < ApplicationController
     @reservation = @restaurant.reservations.build
   end
 
-  def show
+  def create
+    @reservation = @restaurant.reservations.build (reservation_params)
+    @reservation.user_id = current_user.id
+    if @reservation.save
+      redirect_to restaurant_reservation_path(@restaurant.id, @reservation.id)
+    else
+      render :new
+    end
   end
 
-  def search
-    @reservations = Reservation.search_by_date(reservation_params)
-    redirect_to reservations_search_results_path
+  def show
+    @reservation = @restaurant.reservations.find(params[:id])
   end
   
   private
@@ -19,6 +25,7 @@ class ReservationsController < ApplicationController
   end
 
   def reservation_params
-    params.require(:reservation).permit(:date, :time, :guests)
+    params.require(:reservation).permit(:day, :time, :guests)
   end
+
 end

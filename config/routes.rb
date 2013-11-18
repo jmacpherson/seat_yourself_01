@@ -1,11 +1,12 @@
 SorceryPostgresql::Application.routes.draw do
-  # get "reservations_search_results" => ""
-  root to: "users#index"
+  
+  root to: "restaurants#index"
   resources :users do
     resources :reservations, :except => [:new]
   end
+
   resources :restaurants do
-    resources :reservations 
+    resources :reservations
   end
 
   resources :user_sessions, :only => [:new, :create, :destroy]
