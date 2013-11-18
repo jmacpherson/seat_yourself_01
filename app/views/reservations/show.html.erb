@@ -3,3 +3,5 @@
 <p>Your reservation is for <%= @reservation.time %></p>
 <br>  
 <p>Reservation made by: <%= @reservation.user.email %></p>
+
+<%= link_to "Back to restaurant", restaurant_path(@restaurant.id) %>

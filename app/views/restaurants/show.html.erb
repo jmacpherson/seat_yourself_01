@@ -8,6 +8,15 @@
 
 <%= link_to "Make a reservation", new_restaurant_reservation_path(@restaurant.id) %>
 
+<h3>Current reservations</h3>
+
+<% @restaurant.reservations.each do |reservation| %>
+  <p>Reservation for <%= reservation.guests %> at <%= reservation.time %> by <%= reservation.user.email %>
+    </p>
+<% end %>
+  
+  
+
 
 
 
