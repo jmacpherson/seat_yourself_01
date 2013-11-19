@@ -5,4 +5,9 @@ class User < ActiveRecord::Base
   authenticates_with_sorcery!
 
   validates :password, confirmation: true
+  validates_presence_of :email
+  validates_uniqueness_of :email
+
+  
+
 end
