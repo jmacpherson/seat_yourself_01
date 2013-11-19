@@ -3,18 +3,23 @@
 <%= @user.email %>
 <p>You have <%= @user.loyalty_points unless @user.loyalty_points.nil? %> loyalty points.</p>
 <hr>
+<h4>Your upcoming reservations:</h4>
 <% @user.reservations.each do |reservation| %>
-  <p>Reservation for <%= reservation.guests %> at <%= reservation.time %> on <%= reservation.day %> at <%= reservation.restaurant.name %></p>
+  <% unless reservation.day.past? %>
+    <p>Reservation for <%= reservation.guests %> at <%= reservation.time %> on <%= reservation.day %> at <%= link_to reservation.restaurant.name, restaurant_path(reservation.restaurant_id) %></p>
+  <% end %>
 <% end %>
 
 <!-- Users reservations -->
 <% if @user.reservations.any? %>
   <hr>
-  <h4>Your reservations:</h4>
+  <h4>Your past reservations:</h4>
   <% @user.reservations.each do |reservation| %>
-    <section>
-      <%= reservation.day %> at <%= reservation.time %> for <%= reservation.guests %> at <%= link_to reservation.restaurant.name, restaurant_path(reservation.restaurant_id) %>
-    </section>
+    <% if reservation.day.past? %>
+      <section>
+        <%= reservation.day.to_s(:short) %> at <%= reservation.time %> for <%= reservation.guests %> at <%= link_to reservation.restaurant.name, restaurant_path(reservation.restaurant_id) %>
+      </section>
+    <% end %>
   <% end %>
 <% end %>
 
