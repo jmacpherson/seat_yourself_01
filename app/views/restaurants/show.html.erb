@@ -6,22 +6,13 @@
 <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@restaurant.latitude}%2C#{@restaurant.longitude}" %>
 <br>
 
-<% if current_user %>
   
-  <%= link_to "Make a reservation", new_restaurant_reservation_path(@restaurant.id) %>
-  <h3>Current reservations</h3>
+<%= link_to "Make a reservation", new_restaurant_reservation_path(@restaurant.id) %>
+<hr>
+<h3>Current reservations</h3>
 
-  <% @restaurant.reservations.each do |reservation| %>
-    <p>Reservation for <%= reservation.guests %> at <%= reservation.time %> on <%= reservation.day %> <%= reservation.user.email %>
-      </p>
+<% @restaurant.reservations.each do |reservation| %>
+  <% unless reservation.day.past? %>
+    <p>Reservation for <%= reservation.guests %> at <%= reservation.time %> on <%= reservation.day %> <%= reservation.user.email %></p>
   <% end %>
-
 <% end %>
-
-  
-  
-
-
-
-
-  

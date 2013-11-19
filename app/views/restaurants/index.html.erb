@@ -5,6 +5,8 @@
   <br>
 <% end %>
 <br>
-<%= link_to "Add a restaurant", new_restaurant_path %>
+<% if can? :create, Restaurant %>
+  <%= link_to "Add a restaurant", new_restaurant_path %>
+<% end %>
 
   

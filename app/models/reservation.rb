@@ -1,6 +1,5 @@
 class Reservation < ActiveRecord::Base
-  TIMES = %w(7:00pm 8:00pm 9:00pm)
-  GUESTS = %w(1 2 3 4 5 6 7 8 9 10)
+  GUESTS = %w(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20)
   belongs_to :user
   belongs_to :restaurant
   validates_presence_of :day, :message => "What day would you like to make your reservation?"
@@ -10,20 +9,18 @@ class Reservation < ActiveRecord::Base
 
 
   def capacity
-    10
+    100
   end
 
   def availability?
-    booked_guests = booked_guests_at_time
-    (booked_guests + self.guests) <= capacity
+    (booked_guests_at_time + self.guests) <= capacity
   end
 
   def seats_left
-    booked_guests = booked_guests_at_time
-    capacity - booked_guests
+    capacity - booked_guests_at_time
   end
 
   def booked_guests_at_time
-    booked_guests =  Reservation.where(restaurant_id: self.restaurant_id, day: self.day, time: self.time).sum(:guests)
+    Reservation.where(restaurant_id: self.restaurant_id, day: self.day, time: self.time).sum(:guests)
   end
 end

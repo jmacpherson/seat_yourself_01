@@ -7,10 +7,10 @@ class Ability
         can :manage, :all
     elsif user.role == "customer"
         can :manage, User
-        can :manage, Reservations
-        can :read, Restaurants
+        can :manage, Reservation
+        can :read, Restaurant
     else
-        can :read, Restaurants
+        can :read, Restaurant
     end
 
     # Define abilities for the passed in user here. For example:

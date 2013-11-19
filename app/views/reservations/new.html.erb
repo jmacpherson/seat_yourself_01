@@ -1,5 +1,5 @@
 <h2>Make a reservation</h2>
-<p><%= Restaurant.find(params[:restaurant_id]).name %></p>
+<p><%= link_to Restaurant.find(params[:restaurant_id]).name, restaurant_path(params[:restaurant_id]) %></p>
 
 <%= form_for @reservation, url: {:action => "create"} do |f| %>
   <% if @reservation.errors.any? %>

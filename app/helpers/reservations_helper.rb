@@ -14,7 +14,6 @@ module ReservationsHelper
   def reservation_slots
     reservations = Array.new
     time = DateTime.now.at_beginning_of_day + open_time.hours
-    # binding.pry
     while time.hour.hours <= close_time.hours
       reservations << legible_time(time)
       time += interval

@@ -5,3 +5,29 @@
 <% @user.reservations.each do |reservation| %>
   <p>Reservation for <%= reservation.guests %> at <%= reservation.time %> on <%= reservation.day %> at <%= reservation.restaurant.name %></p>
 <% end %>
+
+<!-- Users reservations -->
+<% if @user.reservations.any? %>
+  <hr>
+  <h4>Your reservations:</h4>
+  <% @user.reservations.each do |reservation| %>
+    <section>
+      <%= reservation.day %> at <%= reservation.time %> for <%= reservation.guests %> at <%= link_to reservation.restaurant.name, restaurant_path(reservation.restaurant_id) %>
+    </section>
+  <% end %>
+<% end %>
+
+<!-- Restauranteurs reservations by restaurant -->
+<% if can? :manage, Restaurant %>
+  <hr>
+  <h4>Upcoming reservations at your restaurants:</h4>
+  <% @user.restaurants.each do |restaurant| %>
+    <h5><%= restaurant.name %></h5>
+    <% restaurant.reservations.each do |reservation| %>
+      <% unless reservation.day.past? %>
+        <%= reservation.guests %> at <%= reservation.time %> on <%= reservation.day %>
+      <% end %>
+    <% end %>
+    <hr>
+  <% end %>
+<% end %>
