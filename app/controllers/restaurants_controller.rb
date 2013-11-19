@@ -1,4 +1,5 @@
 class RestaurantsController < ApplicationController
+  skip_before_filter :require_login, except: [:new]
   before_filter :load_user
 
   def index
