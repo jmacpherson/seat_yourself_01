@@ -5,4 +5,5 @@ class Restaurant < ActiveRecord::Base
   after_validation :geocode
 
   # to define.  Interval, open time, close time. Total people per interval.
+  
 end

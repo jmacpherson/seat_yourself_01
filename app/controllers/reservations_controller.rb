@@ -11,6 +11,9 @@ class ReservationsController < ApplicationController
     if @reservation.save
       redirect_to restaurant_reservation_path(@restaurant.id, @reservation.id)
     else
+      unless @reservation.availability?
+        flash[:alert] = "Sorry, we can't handle that many people at that time, there are #{@reservation.seats_left} available seats."
+      end
       render :new
     end
   end
