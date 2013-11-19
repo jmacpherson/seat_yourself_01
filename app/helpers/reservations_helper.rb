@@ -36,4 +36,8 @@ module ReservationsHelper
       return (matchd[0..1].join('').to_i - 12).to_s + matchd[2..-1].join('') + " pm"
     end
   end
+
+  def this_week?(reservation)
+    !(reservation.day.past? || reservation.day > (Date.today + 7.days))
+  end
 end

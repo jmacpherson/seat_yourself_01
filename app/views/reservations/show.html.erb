@@ -3,5 +3,7 @@
 <p>Your reservation is for <%= @reservation.time %></p>
 <br>  
 <p>Reservation made by: <%= @reservation.user.email %></p>
+<br>
+<p>You received 100 loyalty points! Check them out in your profile.</p>
 
 <%= link_to "Back to restaurant", restaurant_path(@restaurant.id) %>

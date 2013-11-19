@@ -9,6 +9,8 @@ class ReservationsController < ApplicationController
     @reservation = @restaurant.reservations.build (reservation_params)
     @reservation.user_id = current_user.id
     if @reservation.save
+      current_user.loyalty_points += 100
+      current_user.save
       redirect_to restaurant_reservation_path(@restaurant.id, @reservation.id)
     else
       unless @reservation.availability?
