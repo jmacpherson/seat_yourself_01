@@ -16,7 +16,7 @@
   <%= f.date_field :day %>
   <br>
   <%= f.label :time %>
-  <%= f.collection_select :time, Reservation::TIMES, :to_s, :humanize %>
+  <%= f.collection_select :time, reservation_slots, :to_s, :humanize %>
   <br>
   <%= f.label :guests %>
   <%= f.collection_select :guests, Reservation::GUESTS, :to_i, :humanize %>
