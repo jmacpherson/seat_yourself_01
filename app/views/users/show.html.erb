@@ -38,5 +38,10 @@
 <!-- For Owners: Customer list -->
 <% if can? :manage, Restaurant %>
   <h4>Your customers:</h4>
-  
+    <% your_customers(@user).each do |customer| %>
+      <section>
+        <%= customer.email %> has <%= customer.loyalty_points %>
+      </section>
+    <% end %>
 <% end %>
+<br>
