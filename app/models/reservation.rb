@@ -24,11 +24,6 @@ class Reservation < ActiveRecord::Base
   end
 
   def booked_guests_at_time
-    matching_reservations = Reservation.where(restaurant_id: self.restaurant_id, day: self.day, time: self.time)
-    booked_guests = 0
-    matching_reservations.each do |reservation|
-      booked_guests += reservation.guests
-    end
-    booked_guests
+    booked_guests =  Reservation.where(restaurant_id: self.restaurant_id, day: self.day, time: self.time).sum(:guests)
   end
 end
