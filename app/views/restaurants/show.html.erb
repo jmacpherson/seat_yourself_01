@@ -4,10 +4,9 @@
 <br>
 
 <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@restaurant.latitude}%2C#{@restaurant.longitude}" %>
-<br>
 
-  
-<%= link_to "Make a reservation", new_restaurant_reservation_path(@restaurant.id) %>
+<hr>  
+<%= link_to "Make a reservation", new_restaurant_reservation_path(@restaurant.id), :class => "button" %>
 <hr>
 <h3>Current reservations</h3>
 
